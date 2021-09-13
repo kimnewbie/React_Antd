@@ -1,14 +1,15 @@
 import './App.css';
-import 'antd/dist/antd.css'; 
-import { 
+import 'antd/dist/antd.css';
+import {
   Button, Input, Select, Form, Table, message, Alert, DatePicker, Spin, Progress
 } from 'antd';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { PoweroffOutlined, UserOutlined } from '@ant-design/icons';
+import AntProgress from './componts/AntProgress';
 
 function App() {
 
-  const [ loading, setLoading ] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onButtonClick = (e) => {
     console.log('Button Clicked')
@@ -18,13 +19,13 @@ function App() {
     }, 2000)
   }
 
-  const fruits = ['Banana', 'Mango', 'Orange', 'Cheery']  
-  
-  const [ showAlert, setShowAlert ] =  useState(false);
+  const fruits = ['Banana', 'Mango', 'Orange', 'Cheery']
+
+  const [showAlert, setShowAlert] = useState(false);
 
   const onFinish = (e) => {
     console.log(e)
-    setTimeout(()=>{
+    setTimeout(() => {
       setShowAlert(true)
       //message.warning('Login Error');
     }, 1000);
@@ -64,7 +65,7 @@ function App() {
       title: 'Age',
       dataIndex: 'age',
       key: 'key',
-      sorter: (a,b) => a.age - b.age
+      sorter: (a, b) => a.age - b.age
     },
     {
       title: 'Address',
@@ -75,33 +76,27 @@ function App() {
       title: 'Graduated?',
       key: 'key',
       render: playload => {
-        return <p>{playload.age>20? 'True' : 'False'}</p>
+        return <p>{playload.age > 20 ? 'True' : 'False'}</p>
       }
     }
   ]
 
-  const [ spinning, setSpinning ] = useState(false)
+  const [spinning, setSpinning] = useState(false)
 
   return (
-    <div className="App"> 
-      <div className="App-header"> 
-        <Progress percent={88} /><br />
-        <Progress percent={88} type='circle' /><br />
-        <Progress percent={88} type='circle' status='success' /><br />
-        <Progress percent={88} type='circle' status='exception' /><br />
-        <Progress percent={88} type='line' strokeColor='green' status='active' /><br />
-        <Progress percent={88} type='line' strokeColor='green' strokeWidth={50} status='active' /><br />
-        <Progress percent={88} type='line' strokeColor='green' status='success' steps={5} /><br />
+    <div className="App">
+      <div className="App-header">
+        <AntProgress />
         <DatePicker /><br />
         <DatePicker.RangePicker /><br />
         <Spin spinning={spinning}></Spin>
-        <Button onClick={()=>{setSpinning(preValue=>!preValue)}} > Show Spinning</Button>
-        { showAlert &&
-          <Alert 
-          type='error' 
-          message='Error' 
-          description= 'There was an error on login.' />
-        }        
+        <Button onClick={() => { setSpinning(preValue => !preValue) }} > Show Spinning</Button>
+        {showAlert &&
+          <Alert
+            type='error'
+            message='Error'
+            description='There was an error on login.' />
+        }
         <br />
         <Form onFinish={onFinish}>
           <Form.Item label="User Name" name="username">
@@ -111,10 +106,10 @@ function App() {
             <Input.Password placeholder="Password" />
           </Form.Item>
           <Form.Item>
-            <Button  block htmlType='submit' type='primary'>Log in</Button>
+            <Button block htmlType='submit' type='primary'>Log in</Button>
           </Form.Item>
-        </Form> 
-        <br/>
+        </Form>
+        <br />
         <Table
           dataSource={data}
           columns={columns}
@@ -122,9 +117,9 @@ function App() {
 
         </Table>
         <br />
-        <Button 
+        <Button
           className='my-button'
-          type='primary' 
+          type='primary'
           //href="https://google.com"
           block
           loading={loading}
@@ -135,7 +130,7 @@ function App() {
         <Input
           type="text"
           block
-          placeholder="Input" 
+          placeholder="Input"
           maxLength={10}
           prefix={<UserOutlined />}
           allowClear
@@ -145,19 +140,19 @@ function App() {
           placeholder="Input Search"
         >
         </Input.Search>
-        <Select placeholder='Select fruit' style={{width:'100%'}}>
-          {fruits.map((fruit, index)=>{
+        <Select placeholder='Select fruit' style={{ width: '100%' }}>
+          {fruits.map((fruit, index) => {
             return <Select.Option key={index} value={fruit}>{fruit}</Select.Option>
           })}
         </Select>
-        <Select 
-          mode="multiple" 
-          placeholder='Select fruit' 
-          style={{width:'100%'}}
+        <Select
+          mode="multiple"
+          placeholder='Select fruit'
+          style={{ width: '100%' }}
           maxTagCount={2}
           allowClear
         >
-          {fruits.map((fruit, index)=>{
+          {fruits.map((fruit, index) => {
             return <Select.Option key={index} value={fruit}>{fruit}</Select.Option>
           })}
         </Select>
