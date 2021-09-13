@@ -7,6 +7,8 @@ import React, { useState } from 'react';
 import { PoweroffOutlined, UserOutlined } from '@ant-design/icons';
 import AntProgress from './componts/AntProgress';
 import AntTable from './componts/AntTable';
+import AntDatePicker from './componts/AntDatePicker';
+import AntSpin from './componts/AntSpin';
 
 function App() {
 
@@ -34,16 +36,14 @@ function App() {
 
 
 
-  const [spinning, setSpinning] = useState(false)
 
   return (
     <div className="App">
       <div className="App-header">
         <AntProgress />
-        <DatePicker /><br />
-        <DatePicker.RangePicker /><br />
-        <Spin spinning={spinning}></Spin>
-        <Button onClick={() => { setSpinning(preValue => !preValue) }} > Show Spinning</Button>
+        <AntDatePicker />
+        <AntSpin />
+
         {showAlert &&
           <Alert
             type='error'
