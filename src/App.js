@@ -9,6 +9,7 @@ import AntProgress from './componts/AntProgress';
 import AntTable from './componts/AntTable';
 import AntDatePicker from './componts/AntDatePicker';
 import AntSpin from './componts/AntSpin';
+import AntLogin from './componts/AntLogin';
 
 function App() {
 
@@ -24,47 +25,14 @@ function App() {
 
   const fruits = ['Banana', 'Mango', 'Orange', 'Cheery']
 
-  const [showAlert, setShowAlert] = useState(false);
-
-  const onFinish = (e) => {
-    console.log(e)
-    setTimeout(() => {
-      setShowAlert(true)
-      //message.warning('Login Error');
-    }, 1000);
-  }
-
-
-
-
   return (
     <div className="App">
       <div className="App-header">
         <AntProgress />
         <AntDatePicker />
-        <AntSpin />
-
-        {showAlert &&
-          <Alert
-            type='error'
-            message='Error'
-            description='There was an error on login.' />
-        }
-        <br />
-        <Form onFinish={onFinish}>
-          <Form.Item label="User Name" name="username">
-            <Input placeholder="User name" />
-          </Form.Item>
-          <Form.Item label="Password" name="password">
-            <Input.Password placeholder="Password" />
-          </Form.Item>
-          <Form.Item>
-            <Button block htmlType='submit' type='primary'>Log in</Button>
-          </Form.Item>
-        </Form>
-        <br />
+        <AntSpin /><br />
+        <AntLogin />
         <AntTable />
-        <br />
         <Button
           className='my-button'
           type='primary'
