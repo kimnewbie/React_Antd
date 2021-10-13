@@ -8,7 +8,7 @@ export default function AntSkeleton() {
         listData.push({
             title: `User ${i}`,
             avatar: "아바타",
-            content: "동해물과 백두산이..."
+            content: "동해물과 백두산이 마르고 닳도록~"
         })
     }
 
@@ -17,7 +17,8 @@ export default function AntSkeleton() {
             setIsLoading(false);
         }, 2000);
         return () => clearTimeout(timer);
-    }, [])
+    }, []); // 2초 후 로딩완료
+
 
     return (
         <div>
